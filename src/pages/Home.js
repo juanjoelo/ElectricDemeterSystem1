@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import stickersData from "./stickers.json";
-import { CartContext } from "../context/CartContext"; // Asegúrate de importar CartContext
+import { CartContext } from "../context/CartContext.js"; // importamo cartcontext pa
 
 const Home = () => {
   const [stickers, setStickers] = useState([]);

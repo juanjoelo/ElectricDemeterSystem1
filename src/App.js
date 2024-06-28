@@ -8,9 +8,12 @@ import Signup from "./pages/Signup";
 import Cart from "./pages/cart";
 import Checkout from "./pages/checkout";
 import { CartProvider } from "./context/CartContext";
+import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   return (
+
+    <UserProvider> 
     <CartProvider>
       <Router>
         <NavBar />
@@ -23,6 +26,7 @@ const App = () => {
         </Routes>
       </Router>
     </CartProvider>
+    </UserProvider>
   );
 };
 
