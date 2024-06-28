@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../index.css"; // Importa tu archivo CSS aquí
-
+import { useUser } from "../context/UserContext.js"; // Asegúrate de importar correctamente tu contexto de usuario
 
 const Navbar = () => {
+  const { currentUser } = useUser(); // Obtén el usuario actual desde el contexto
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,9 +21,20 @@ const Navbar = () => {
           <Link to="/" className="text-gray-300 hover:text-white">
             Home
           </Link>
-          <Link to="/login" className="text-gray-300 hover:text-white">
-            Login
-          </Link>
+          {currentUser ? ( // Verifica si hay un usuario actualmente autenticado
+            <>
+              <Link to="/profile" className="text-gray-300 hover:text-white">
+                {currentUser.username} {/* Muestra el nombre del usuario */}
+              </Link>
+              <Link to="/purchases" className="text-gray-300 hover:text-white">
+                Purchases
+              </Link>
+            </>
+          ) : (
+            <Link to="/login" className="text-gray-300 hover:text-white">
+              Login
+            </Link>
+          )}
           <Link to="/cart" className="text-gray-300 hover:text-white">
             Cart
           </Link>
@@ -57,18 +69,29 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link
-            to="/login"
-            className="block px-2 py-1 text-gray-300 hover:text-white"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            className="block px-2 py-1 text-gray-300 hover:text-white"
-          >
-            Sign Up
-          </Link>
+          {currentUser ? (
+            <>
+              <Link
+                to="/profile"
+                className="block px-2 py-1 text-gray-300 hover:text-white"
+              >
+                {currentUser.username}
+              </Link>
+              <Link
+                to="/purchases"
+                className="block px-2 py-1 text-gray-300 hover:text-white"
+              >
+                Purchases
+              </Link>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="block px-2 py-1 text-gray-300 hover:text-white"
+            >
+              Login
+            </Link>
+          )}
           <Link
             to="/cart"
             className="block px-2 py-1 text-gray-300 hover:text-white"

@@ -1,6 +1,6 @@
 // src/pages/Checkout.js
 import React, { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context/CartContext.js";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
@@ -10,7 +10,7 @@ const Checkout = () => {
   };
 
   const handlePayment = async () => {
-    // Aquí debes agregar tu lógica para manejar el pago con Mercado Pago.
+    // aca tengo que agregar la lógica para manejar el pago con Mercado Pago00
     const response = await fetch("YOUR_BACKEND_API_ENDPOINT", {
       method: "POST",
       headers: {
@@ -31,7 +31,7 @@ const Checkout = () => {
     <div className="checkout-container">
       <h2 className="checkout-title">Checkout</h2>
       {cart.length === 0 ? (
-        <p className="empty-cart">Your cart is empty</p>
+        <p className="empty-cart">Tu carrito está vacío</p>
       ) : (
         <div className="checkout-items">
           {cart.map((item, index) => (
@@ -44,14 +44,14 @@ const Checkout = () => {
               <div className="checkout-item-details">
                 <h3 className="checkout-item-name">{item.name}</h3>
                 <p className="checkout-item-price">${item.price}</p>
-                <p className="checkout-item-quantity">Quantity: {item.quantity}</p>
+                <p className="checkout-item-quantity">Cantidad: {item.quantity}</p>
               </div>
             </div>
           ))}
           <div className="checkout-total">
             <h3>Total: ${getTotalPrice().toFixed(2)}</h3>
             <button className="checkout-button" onClick={handlePayment}>
-              Pay with Mercado Pago
+              Proceder a pagar
             </button>
           </div>
         </div>
