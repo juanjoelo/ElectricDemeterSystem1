@@ -10,7 +10,7 @@ const port = 5000;
 
 // Conexión a la base de datos MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/stickerAtick", {
+  .connect("mongodb://localhost:27017/StickerAtick", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

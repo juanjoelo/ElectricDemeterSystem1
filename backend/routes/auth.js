@@ -2,8 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const User = require("../../src/models/User"); // La ruta correcta a tu modelo de Usuario
-
+const User = require("../models/User.js"); // Asegúrate de que esta ruta sea correcta
 // Ruta para registrar un nuevo usuario
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -33,19 +32,17 @@ router.post("/register", async (req, res) => {
 
 // Ruta para iniciar sesión
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    // Busca el usuario en la base de datos por nombre de usuario
-    const user = await User.findOne({ username });
-    if (!user) {
-      return res
-        .status(404)
-        .json({ error: "Nombre de usuario o contraseña incorrectos" });
+    // Busca el usuario en la base de datos por email
+    const user = await User.find({ email }).limit(1);
+    if (user.length === 0) {
+      return res.status(404).json({ error: "Email o contraseña incorrectos" });
     }
 
     // Verifica la contraseña
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user[0].password);
     if (!isPasswordValid) {
       return res
         .status(404)
@@ -53,11 +50,15 @@ router.post("/login", async (req, res) => {
     }
 
     // Devuelve el usuario encontrado
-    res.status(200).json(user);
+    res.status(200).json(user[0]);
   } catch (err) {
     console.error("Error al iniciar sesión:", err);
     res.status(500).json({ error: "Error interno del servidor" });
   }
+});
+
+router.post("/prueba", async (req, res) => {
+  res.send("Esta es una prueba técnica.");
 });
 
 module.exports = router;
