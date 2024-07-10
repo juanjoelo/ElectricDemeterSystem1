@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import "./Login.css"; // Importa el archivo CSS
 
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate para la redirección
+
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState(""); // Nuevo estado para el nombre de usuario (si se registra)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Estado para manejar errores
+  const [loading, setLoading] = useState(false); // Estado para manejar la carga
+  const [message, setMessage] = useState(""); // Estado para manejar el mensaje de sesión iniciada
+  const { setCurrentUser } = useUser(); // Obtén la función para establecer el usuario actual desde el contexto
+  const navigate = useNavigate(); // Obtén la función navigate para la redirección
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true); // Inicia el estado de carga
 
     // Construye el cuerpo de la solicitud
     const requestBody = {
@@ -20,7 +28,9 @@ const Login = () => {
 
     try {
       // Determina la URL correcta para el endpoint de acuerdo a si es login o register
-      const url = isLogin ? "http://localhost:5000/api/auth/login" : "http://localhost:5000/api/auth/register";
+      const url = isLogin
+        ? "http://localhost:5000/api/auth/login"
+        : "http://localhost:5000/api/auth/register";
 
       // Realiza la solicitud al backend
       const response = await fetch(url, {
@@ -38,15 +48,26 @@ const Login = () => {
 
       const userData = await response.json();
       console.log(userData); // Maneja la respuesta del servidor según necesites
+      setCurrentUser(userData); // Establece el usuario actual en el contexto
 
       // Restablece los campos después del éxito
       setUsername("");
       setEmail("");
       setPassword("");
       setError(""); // Limpia cualquier error previo
+
+      // Muestra el mensaje de éxito
+      setMessage("Sesión iniciada con éxito");
+      setTimeout(() => {
+        setMessage("");
+        // Redirige al usuario a la página de inicio después de 1 segundo
+        navigate("/");
+      }, 1000); // Desaparece el mensaje después de 1 segundo
     } catch (error) {
       console.error("Error:", error.message);
       setError(error.message);
+    } finally {
+      setLoading(false); // Termina el estado de carga
     }
   };
 
@@ -96,8 +117,8 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="form-button">
-            {isLogin ? "Login" : "Register"}
+          <button type="submit" className="form-button" disabled={loading}>
+            {loading ? "Loading..." : isLogin ? "Login" : "Register"}
           </button>
         </form>
         <div className="form-footer">
@@ -112,6 +133,7 @@ const Login = () => {
           </p>
         </div>
         {error && <p className="form-error">{error}</p>}
+        {message && <p className="form-success">{message}</p>}
       </div>
     </div>
   );

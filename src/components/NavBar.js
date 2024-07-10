@@ -1,14 +1,19 @@
+// Navbar.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useUser } from "../context/UserContext.js"; // Asegúrate de importar correctamente tu contexto de usuario
+import { useUser } from "../context/UserContext.js";
 
 const Navbar = () => {
-  const { currentUser } = useUser(); // Obtén el usuario actual desde el contexto
+  const { currentUser, logout } = useUser(); // Obtén el usuario actual y la función de cerrar sesión desde el contexto
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -21,14 +26,20 @@ const Navbar = () => {
           <Link to="/" className="text-gray-300 hover:text-white">
             Home
           </Link>
-          {currentUser ? ( // Verifica si hay un usuario actualmente autenticado
+          {currentUser ? (
             <>
               <Link to="/profile" className="text-gray-300 hover:text-white">
-                {currentUser.username} {/* Muestra el nombre del usuario */}
+                {currentUser.username}
               </Link>
               <Link to="/purchases" className="text-gray-300 hover:text-white">
                 Purchases
               </Link>
+              <button
+                onClick={handleLogout}
+                className="text-gray-300 hover:text-white"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <Link to="/login" className="text-gray-300 hover:text-white">
@@ -81,8 +92,14 @@ const Navbar = () => {
                 to="/purchases"
                 className="block px-2 py-1 text-gray-300 hover:text-white"
               >
-                Purchases
+                compras
               </Link>
+              <button
+                onClick={handleLogout}
+                className="block px-2 py-1 text-gray-300 hover:text-white"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <Link
