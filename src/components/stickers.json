@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "Vegito",
+      "type": "Dragon Ball",
+      "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker1.jpg?raw=true",
+      "price": "500"
+    },
+    {
+      "id": 2,
+      "name": "Chopper",
+      "type": "One Piece",
+      "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker2.jpg?raw=true",
+      "price": "500"
+    },
+    {
+        "id": 3,
+        "name": "Saitama",
+        "type": "One Punch Man",
+        "image": "https://raw.githubusercontent.com/juanjoelo/ElectricDemeterSystem1/master/public/images/sticker3.jpg",
+        "price": "500"
+      },
+      {
+        "id": 4,
+        "name": "Gojo",
+        "type": "Jujutsu Kaisen",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker4.jpg?raw=true",
+        "price": "500"
+      }
+  ]
+
+  
+  
