@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link to="/" className="logo">
-          <img src="public\images\sticker-logo.png" alt="StickerAtick Logo" className="h-8" />
+          <img src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker-logo.png?raw=true" alt="StickerAtick Logo" className="h-8" />
           </Link>
           <div
             className="relative"

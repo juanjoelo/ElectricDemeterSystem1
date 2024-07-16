@@ -13,6 +13,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <h1 className="titulo">Más comprados</h1>
       <div className="stickers-container">
         {stickers.map((sticker) => (
           <div key={sticker.id} className="sticker-card">

@@ -1,5 +1,5 @@
 .cuerpo-nav {
-    background-color: #333333;
+    background-color: #222121;
   }
   
   .container {
@@ -89,6 +89,12 @@
   
     .md\:flex {
       display: flex;
+    }
+    .logo{
+      transform: scale(500%);
+      padding-right: 25px;
+      padding-top: 15px;
+      margin-right: 25px;
     }
   }
   

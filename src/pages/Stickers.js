@@ -31,6 +31,7 @@ const Stickers = () => {
               />
               <h3>{sticker.name}</h3>
               <p>{sticker.type}</p>
+              <p>{"$" + sticker.price}</p>
               <button onClick={() => handleAddToCart(sticker)}>
                 Agregar al carrito
               </button>
