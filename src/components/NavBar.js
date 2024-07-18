@@ -68,11 +68,12 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Link to="/" className="logo">
             <img
-              src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/logodef1.png?raw=true"
+              src="https://raw.githubusercontent.com/juanjoelo/ElectricDemeterSystem1/master/public/logodef2.png"
               alt="StickerAtick Logo"
               className="h-8"
             />
           </Link>
+          
           <div
             className="relative"
             onMouseEnter={handleStickersMouseEnter}

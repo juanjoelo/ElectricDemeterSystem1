@@ -14,6 +14,9 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <div className="portada">
+        <img src="" />
+      </div>
       <h1 className="titulo">Más comprados</h1>
       <div className="stickers-container">
         {stickers.map((sticker) => (
