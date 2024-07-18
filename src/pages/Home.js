@@ -15,7 +15,10 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="portada">
-        <img src="" />
+        <img
+          src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/portadadefi.png?raw=true"
+          alt="portada"
+        />
       </div>
       <h1 className="titulo">Más comprados</h1>
       <div className="stickers-container">
