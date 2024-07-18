@@ -1,5 +1,6 @@
 .cuerpo-nav {
-    background-color: #222121;
+    background-color: #952297;
+    padding-top: 100px;
   }
   
   .container {
@@ -91,9 +92,9 @@
       display: flex;
     }
     .logo{
-      transform: scale(500%);
+      transform: scale(300%);
       padding-right: 0px;
-      padding-top: 15px;
+      padding-bottom: 20px;
       margin-right: 25px;
     }
 

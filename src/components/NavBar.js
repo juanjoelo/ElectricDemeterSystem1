@@ -68,7 +68,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Link to="/" className="logo">
             <img
-              src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker-logo.png?raw=true"
+              src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/logodef1.png?raw=true"
               alt="StickerAtick Logo"
               className="h-8"
             />
