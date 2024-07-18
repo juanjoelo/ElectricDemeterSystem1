@@ -1,30 +1,64 @@
-// src/pages/Checkout.js
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext.js";
+import "./checkout.css";
+const provinces = [
+  "Buenos Aires",
+  "Catamarca",
+  "Chaco",
+  "Chubut",
+  "Córdoba",
+  "Corrientes",
+  "Entre Ríos",
+  "Formosa",
+  "Jujuy",
+  "La Pampa",
+  "La Rioja",
+  "Mendoza",
+  "Misiones",
+  "Neuquén",
+  "Río Negro",
+  "Salta",
+  "San Juan",
+  "San Luis",
+  "Santa Cruz",
+  "Santa Fe",
+  "Santiago del Estero",
+  "Tierra del Fuego",
+  "Tucumán",
+];
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
+  const [shippingInfo, setShippingInfo] = useState({
+    firstName: "",
+    lastName: "",
+    document: "",
+    country: "Argentina", // Default country
+    address: "",
+    floorDept: "",
+    city: "",
+    province: "",
+    postalCode: "",
+    phone: "",
+    email: "",
+    additionalInfo: "",
+  });
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  const handlePayment = async () => {
-    // aca tengo que agregar la lógica para manejar el pago con Mercado Pago00
-    const response = await fetch("YOUR_BACKEND_API_ENDPOINT", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: cart,
-      }),
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setShippingInfo({
+      ...shippingInfo,
+      [name]: value,
     });
+  };
 
-    const data = await response.json();
-
-    // Redirigir al usuario a la URL de pago de Mercado Pago
-    window.location.href = data.init_point;
+  const handlePayment = async () => {
+    // Aquí puedes agregar la lógica para manejar el pago
+    console.log("Formulario de envío:", shippingInfo);
   };
 
   return (
@@ -44,15 +78,157 @@ const Checkout = () => {
               <div className="checkout-item-details">
                 <h3 className="checkout-item-name">{item.name}</h3>
                 <p className="checkout-item-price">${item.price}</p>
-                <p className="checkout-item-quantity">Cantidad: {item.quantity}</p>
+                <p className="checkout-item-quantity">
+                  Cantidad: {item.quantity}
+                </p>
               </div>
             </div>
           ))}
+          <div className="checkout-form">
+            <h3>Datos de Envío</h3>
+            <form>
+              <div className="form-group">
+                <label htmlFor="firstName">Nombre</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={shippingInfo.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastName">Apellido</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={shippingInfo.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="document">Documento</label>
+                <input
+                  type="text"
+                  id="document"
+                  name="document"
+                  value={shippingInfo.document}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="country">País</label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  value={shippingInfo.country}
+                  onChange={handleInputChange}
+                  disabled
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="address">Dirección Completa</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  value={shippingInfo.address}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="floorDept">Piso y Depto</label>
+                <input
+                  type="text"
+                  id="floorDept"
+                  name="floorDept"
+                  value={shippingInfo.floorDept}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="city">Localidad</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={shippingInfo.city}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="province">Provincia</label>
+                <select
+                  id="province"
+                  name="province"
+                  value={shippingInfo.province}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="">Selecciona una provincia</option>
+                  {provinces.map((province, index) => (
+                    <option key={index} value={province}>
+                      {province}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="postalCode">Código Postal</label>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  value={shippingInfo.postalCode}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">Número de Teléfono</label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  value={shippingInfo.phone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Correo Electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={shippingInfo.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="additionalInfo">Información Adicional</label>
+                <textarea
+                  id="additionalInfo"
+                  name="additionalInfo"
+                  value={shippingInfo.additionalInfo}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <button className="checkout-button" onClick={handlePayment}>
+                Finalizar Compra
+              </button>
+            </form>
+          </div>
           <div className="checkout-total">
             <h3>Total: ${getTotalPrice().toFixed(2)}</h3>
-            <button className="checkout-button" onClick={handlePayment}>
-              Proceder a pagar
-            </button>
           </div>
         </div>
       )}

@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import stickersData from "../components/stickers.json";
-import { CartContext } from "../context/CartContext.js"; // Importamos CartContext
-import "./home.css"; // Importamos el archivo CSS
+import { CartContext } from "../context/CartContext.js";
+import "./home.css";
 
 const Home = () => {
   const [stickers, setStickers] = useState([]);
-  const { addToCart } = useContext(CartContext); // Usar el contexto del carrito
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    setStickers(stickersData);
+    setStickers(stickersData.slice(0, 4));
   }, []);
 
   return (
@@ -17,9 +18,11 @@ const Home = () => {
       <div className="stickers-container">
         {stickers.map((sticker) => (
           <div key={sticker.id} className="sticker-card">
-            <img src={sticker.image} alt={sticker.name} />
-            <h3>{sticker.name}</h3>
-            <p>${sticker.price}</p>
+            <Link to={`/sticker/${sticker.id}`}>
+              <img src={sticker.image} alt={sticker.name} />
+              <h3>{sticker.name}</h3>
+              <p>${sticker.price}</p>
+            </Link>
             <button onClick={() => addToCart(sticker)}>
               Agregar al carrito
             </button>

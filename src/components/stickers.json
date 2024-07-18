@@ -26,6 +26,20 @@
         "type": "Jujutsu Kaisen",
         "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker4.jpg?raw=true",
         "price": "500"
+      },
+      {
+        "id": 5,
+        "name": "EVA 1",
+        "type": "Evangelion",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker5.jpg?raw=true",
+        "price": "500"
+      },
+      {
+        "id": 6,
+        "name": "Kid Majin boo",
+        "type": "Dragon Ball",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker6.jpg?raw=true",
+        "price": "500"
       }
   ]
 

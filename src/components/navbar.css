@@ -92,9 +92,13 @@
     }
     .logo{
       transform: scale(500%);
-      padding-right: 25px;
+      padding-right: 0px;
       padding-top: 15px;
       margin-right: 25px;
+    }
+
+    #boton-stickers{
+      margin-left: 100px;
     }
   }
   

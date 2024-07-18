@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext.js";
 import stickersData from "./stickers.json";
 import "./navbar.css";
-//import logo from "../../public/images/sticker-logo.png";
+import { CartContext } from "../context/CartContext.js";
 
 const Navbar = () => {
   const { currentUser, logout } = useUser();
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [stickerTypes, setStickerTypes] = useState([]);
   const hideDropdownTimeout = useRef(null);
   const hideProfileDropdownTimeout = useRef(null);
+  const cartContext = useContext(CartContext);
 
   useEffect(() => {
     const types = [
@@ -20,6 +21,15 @@ const Navbar = () => {
     ].sort();
     setStickerTypes(types);
   }, []);
+
+  // Función para calcular el total de productos en el carrito
+  const getTotalItems = () => {
+    let total = 0;
+    cartContext.cart.forEach((item) => {
+      total += item.quantity;
+    });
+    return total;
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -57,18 +67,32 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link to="/" className="logo">
-          <img src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker-logo.png?raw=true" alt="StickerAtick Logo" className="h-8" />
+            <img
+              src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker-logo.png?raw=true"
+              alt="StickerAtick Logo"
+              className="h-8"
+            />
           </Link>
           <div
             className="relative"
             onMouseEnter={handleStickersMouseEnter}
             onMouseLeave={handleStickersMouseLeave}
           >
-            <button className="text-gray-300 hover:text-white focus:outline-none bg-transparent">
-              Stickers
+            <button
+              className="text-gray-300 hover:text-white focus:outline-none bg-transparent"
+              id="boton-stickers"
+            >
+              Stickers ⇓
             </button>
             {isDropdownOpen && (
               <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-10">
+                <Link
+                  to="/stickers/all"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  onClick={() => setIsDropdownOpen(false)}
+                >
+                  Todos los stickers
+                </Link>
                 {stickerTypes.map((type) => (
                   <Link
                     key={type}
@@ -94,7 +118,7 @@ const Navbar = () => {
               onMouseLeave={handleProfileMouseLeave}
             >
               <button className="text-gray-300 hover:text-white focus:outline-none bg-transparent">
-                {currentUser.username}
+                {currentUser.username} ⇓
               </button>
               {isProfileDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
@@ -126,8 +150,13 @@ const Navbar = () => {
               Login
             </Link>
           )}
-          <Link to="/cart" className="text-gray-300 hover:text-white">
+          <Link to="/cart" className="text-gray-300 hover:text-white relative">
             Cart
+            {getTotalItems() > 0 && (
+              <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs">
+                {getTotalItems()}
+              </span>
+            )}
           </Link>
         </div>
         <div className="md:hidden">
@@ -218,9 +247,14 @@ const Navbar = () => {
           )}
           <Link
             to="/cart"
-            className="block px-2 py-1 text-gray-300 hover:text-white"
+            className="block px-2 py-1 text-gray-300 hover:text-white relative"
           >
             Cart
+            {getTotalItems() > 0 && (
+              <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs">
+                {getTotalItems()}
+              </span>
+            )}
           </Link>
         </div>
       )}
