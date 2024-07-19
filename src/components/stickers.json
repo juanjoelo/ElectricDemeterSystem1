@@ -54,6 +54,27 @@
         "type": "Musica",
         "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker8.jpg?raw=true",
         "price": "500"
+      },
+      {
+        "id": 9,
+        "name": "Bandera Argentina",
+        "type": "Argentina",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker8.jpg?raw=true",
+        "price": "500"
+      },
+      {
+        "id": 10,
+        "name": "4 copas",
+        "type": "Argentina",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker8.jpg?raw=true",
+        "price": "500"
+      },
+      {
+        "id": 11,
+        "name": "Messi",
+        "type": "Argentina",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker8.jpg?raw=true",
+        "price": "500"
       }
   ]
 
