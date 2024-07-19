@@ -7,9 +7,10 @@ import "./home.css"; // Importar estilos de Home.css
 const Stickers = () => {
   const { type } = useParams();
   const decodedType = decodeURIComponent(type);
-  const filteredStickers = decodedType === 'all'
-    ? stickersData
-    : stickersData.filter((sticker) => sticker.type === decodedType);
+  const filteredStickers =
+    decodedType === "all"
+      ? stickersData
+      : stickersData.filter((sticker) => sticker.type === decodedType);
 
   const { addToCart } = useContext(CartContext); // Usar el contexto del carrito
 
@@ -19,7 +20,11 @@ const Stickers = () => {
 
   return (
     <div className="home-container">
-      <h3>{decodedType === 'all' ? 'Todos los Stickers' : `Stickers de ${decodedType}`}</h3>
+      <h3>
+        {decodedType === "all"
+          ? "Todos los Stickers"
+          : `Stickers de ${decodedType}`}
+      </h3>
       <div className="stickers-container">
         {filteredStickers.length > 0 ? (
           filteredStickers.map((sticker) => (
@@ -43,7 +48,11 @@ const Stickers = () => {
           <p>No stickers found for {decodedType}</p>
         )}
       </div>
-      <img src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sasuke.png?raw=true" alt="sasuke" id="sasuke"/>
+      <img
+        src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sasuke.png?raw=true"
+        alt="sasuke"
+        id="sasuke"
+      />
     </div>
   );
 };
