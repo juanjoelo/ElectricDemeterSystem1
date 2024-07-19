@@ -43,7 +43,7 @@ const Stickers = () => {
           <p>No stickers found for {decodedType}</p>
         )}
       </div>
-      <img src="" alt=""/>
+      <img src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sasuke.png?raw=true" alt="sasuke" id="sasuke"/>
     </div>
   );
 };

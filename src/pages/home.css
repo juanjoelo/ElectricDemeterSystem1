@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 .stickers-container {
@@ -49,3 +49,10 @@
   text-align: center;
 }
 
+#sasuke{
+  padding-top: 100px;
+}
+.espacio{
+  margin-bottom: 265px;
+  
+}

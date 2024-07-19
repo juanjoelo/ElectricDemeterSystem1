@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext.js";
 import { useNavigate } from "react-router-dom";
-
+import "./home.css";
 const Cart = () => {
   const { cart, incrementProduct, decrementProduct, removeFromCart } =
     useContext(CartContext);
@@ -18,17 +18,17 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-    <h2 className="cart-title">Carrito</h2>
-    {cart.length === 0 ? (
-      <div className="img-container">
-        <p className="empty-cart">¡Empezá un carrito de stickers!</p>
-        <img
-          src="images/bolsadecompras.png"
-          alt="Bolsa de compras vacía"
-          className="empty-cart-image"
-        />
-      </div>
-              ) : (
+      <h2 className="cart-title">Carrito</h2>
+      {cart.length === 0 ? (
+        <div className="img-container">
+          <p className="empty-cart">¡Empezá un carrito de stickers!</p>
+          <img
+            src="images/bolsadecompras.png"
+            alt="Bolsa de compras vacía"
+            className="empty-cart-image"
+          />
+        </div>
+      ) : (
         <div className="cart-items">
           {cart.map((item, index) => (
             <div key={index} className="cart-item">
@@ -62,6 +62,7 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <div className="espacio"></div>
     </div>
   );
 };
