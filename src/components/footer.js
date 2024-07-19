@@ -1,11 +1,12 @@
 import React from "react";
+import "./footer.css";
 //import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-4">
+    <footer className="bg-gray-800 text-white py-4" id="piedepag">
       <div className="container mx-auto flex justify-between items-center">
         <div>
-          <p>&copy; 2024 Sticker ATTACK!. Todos los derechos reservados.</p>
+          <p>&copy; 2024 VinylVibe. Todos los derechos reservados.</p>
         </div>
         <div>
           <ul className="flex space-x-4">

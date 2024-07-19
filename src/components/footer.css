@@ -1,0 +1,43 @@
+/* Estilos para el footer */
+
+#piedepag {
+    background-color: #333; /* Cambia este valor al color de fondo que prefieras */
+    color: #fff;
+    padding: 100px 0; /* Aumenta el padding para hacerlo más alto */
+    margin-top: 100px;
+    padding-top: 25px;
+  }
+  
+  #piedepag .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #piedepag p {
+    margin: 0;
+
+  }
+  
+  #piedepag ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Ajusta el espacio entre los enlaces */
+  }
+  
+  #piedepag ul li {
+    margin: 0;
+  }
+  
+  #piedepag ul li a {
+    color: #fff; /* Color del texto de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición suave al pasar el ratón sobre los enlaces */
+  }
+  
+  #piedepag ul li a:hover {
+    color: #ddd; /* Color del texto de los enlaces al pasar el ratón */
+  }
+  

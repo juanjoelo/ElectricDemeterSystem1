@@ -16,7 +16,7 @@ const Home = () => {
     <div className="home-container">
       <div className="portada">
         <img
-          src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/portadadefi.png?raw=true"
+          src="https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/portadadef2.png?raw=true"
           alt="portada"
         />
       </div>

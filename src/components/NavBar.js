@@ -73,7 +73,7 @@ const Navbar = () => {
               className="h-8"
             />
           </Link>
-          
+
           <div
             className="relative"
             onMouseEnter={handleStickersMouseEnter}
@@ -128,31 +128,31 @@ const Navbar = () => {
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     onClick={() => setIsProfileDropdownOpen(false)}
                   >
-                    Profile
+                    - Perfil
                   </Link>
                   <Link
                     to="/purchases"
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     onClick={() => setIsProfileDropdownOpen(false)}
                   >
-                    Purchases
+                    - Compras
                   </Link>
                   <button
                     onClick={handleLogout}
                     className="w-full text-left block px-4 py-2 text-gray-700 hover:bg-gray-100 bg-transparent"
                   >
-                    Logout
+                    - Cerrar sesión
                   </button>
                 </div>
               )}
             </div>
           ) : (
             <Link to="/login" className="text-gray-300 hover:text-white">
-              Login
+              - Ingresá -
             </Link>
           )}
           <Link to="/cart" className="text-gray-300 hover:text-white relative">
-            Cart
+            Carrito
             {getTotalItems() > 0 && (
               <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs">
                 {getTotalItems()}
