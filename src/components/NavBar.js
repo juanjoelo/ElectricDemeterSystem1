@@ -110,7 +110,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-4 items-center">
           <Link to="/" className="text-gray-300 hover:text-white">
-            Home
+            Inicio
           </Link>
           {currentUser ? (
             <div

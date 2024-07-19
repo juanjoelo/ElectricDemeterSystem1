@@ -40,6 +40,20 @@
         "type": "Dragon Ball",
         "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker6.jpg?raw=true",
         "price": "500"
+      },
+      {
+        "id": 7,
+        "name": "Maradona",
+        "type": "Argentina",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker7.jpg?raw=true",
+        "price": "500"
+      },
+      {
+        "id": 8,
+        "name": "The Strokes",
+        "type": "Musica",
+        "image": "https://github.com/juanjoelo/ElectricDemeterSystem1/blob/master/public/images/sticker8.jpg?raw=true",
+        "price": "500"
       }
   ]
 

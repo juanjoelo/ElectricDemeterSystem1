@@ -43,6 +43,7 @@ const Stickers = () => {
           <p>No stickers found for {decodedType}</p>
         )}
       </div>
+      <img src="" alt=""/>
     </div>
   );
 };
