@@ -1,9 +1,9 @@
-// backend/server.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+const authRoutes = require("./routes/auth"); // Importa las rutas de autenticación
 
 const app = express();
 const port = 5000;
@@ -23,8 +23,7 @@ app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 // Rutas de autenticación y registro
-const authRoutes = require("./routes/auth");
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes); // Asegúrate de que esta línea está presente
 
 // Modelo de Sticker
 const stickerSchema = new mongoose.Schema({

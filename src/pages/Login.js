@@ -19,7 +19,6 @@ const Login = () => {
     event.preventDefault();
     setLoading(true); // Inicia el estado de carga
 
-    // Construye el cuerpo de la solicitud
     const requestBody = {
       username,
       email,
@@ -27,12 +26,11 @@ const Login = () => {
     };
 
     try {
-      // Determina la URL correcta para el endpoint de acuerdo a si es login o register
+      debugger;
       const url = isLogin
         ? "http://localhost:5000/api/auth/login"
         : "http://localhost:5000/api/auth/register";
 
-      // Realiza la solicitud al backend
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -50,17 +48,14 @@ const Login = () => {
       console.log(userData); // Maneja la respuesta del servidor según necesites
       setCurrentUser(userData); // Establece el usuario actual en el contexto
 
-      // Restablece los campos después del éxito
       setUsername("");
       setEmail("");
       setPassword("");
       setError(""); // Limpia cualquier error previo
 
-      // Muestra el mensaje de éxito
       setMessage("Sesión iniciada con éxito");
       setTimeout(() => {
         setMessage("");
-        // Redirige al usuario a la página de inicio después de 1 segundo
         navigate("/");
       }, 1000); // Desaparece el mensaje después de 1 segundo
     } catch (error) {

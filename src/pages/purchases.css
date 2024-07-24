@@ -1,0 +1,32 @@
+/* src/pages/purchases.css */
+.purchases-container {
+    padding: 100px;
+    padding-bottom: 400px;
+  }
+  
+  .purchases-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .purchases-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .purchase-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .purchase-item h3 {
+    margin-top: 0;
+  }
+  
+  .purchase-item-detail {
+    padding: 5px 0;
+    border-top: 1px solid #ddd;
+  }
+  

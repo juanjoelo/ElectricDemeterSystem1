@@ -6,11 +6,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Cart from "./pages/cart";
 import Checkout from "./pages/checkout";
-import StickersPage from "./pages/Stickers"; // Importa el nuevo componente
+import StickersPage from "./pages/Stickers";
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
 import StickerDetail from "./pages/StickerDetail";
 import Footer from "./components/footer";
+import Profile from "./pages/profile";
+import Purchases from "./pages/purchases"; // Importa la página de compras
 
 const App = () => {
   return (
@@ -26,7 +28,8 @@ const App = () => {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/stickers/:type" element={<StickersPage />} />
             <Route path="/sticker/:id" element={<StickerDetail />} />
-            {/* Aquí está la corrección */}
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/purchases" element={<Purchases />} />
           </Routes>
           <Footer />
         </Router>

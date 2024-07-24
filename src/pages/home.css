@@ -1,5 +1,3 @@
-/* home.css */
-
 .home-container {
   display: flex;
   flex-direction: column;
@@ -26,8 +24,13 @@
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 0.5rem;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: white;
+}
+
+.sticker-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 .sticker-card .sticker-image {
@@ -49,10 +52,10 @@
   text-align: center;
 }
 
-#sasuke{
+#sasuke {
   padding-top: 600px;
-
 }
-.espacio{
+
+.espacio {
   margin-bottom: 265px;
 }
