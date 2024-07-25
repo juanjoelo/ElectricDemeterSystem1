@@ -29,7 +29,6 @@ router.post("/register", async (req, res) => {
 // Ruta para iniciar sesión
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  debugger;
   console.log(email);
   console.log(password);
   try {
