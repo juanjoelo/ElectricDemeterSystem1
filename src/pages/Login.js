@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css"; // Importa el archivo CSS
-
 import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate para la redirección
 
@@ -26,7 +25,6 @@ const Login = () => {
     };
 
     try {
-      debugger;
       const url = isLogin
         ? "http://localhost:5000/api/auth/login"
         : "http://localhost:5000/api/auth/register";
@@ -56,7 +54,13 @@ const Login = () => {
       setMessage("Sesión iniciada con éxito");
       setTimeout(() => {
         setMessage("");
-        navigate("/");
+
+        // Redireccionar a la página de administrador si el usuario es 'admin'
+        if (userData.username === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       }, 1000); // Desaparece el mensaje después de 1 segundo
     } catch (error) {
       console.error("Error:", error.message);

@@ -31,8 +31,11 @@ const provinces = [
 ];
 
 const Checkout = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   const { currentUser } = useUser();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const [shippingInfo, setShippingInfo] = useState({
     firstName: "",
     lastName: "",
@@ -79,9 +82,55 @@ const Checkout = () => {
     });
   };
 
-  const handlePayment = async () => {
-    // Aquí puedes agregar la lógica para manejar el pago
-    console.log("Formulario de envío:", shippingInfo);
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    // Simulación del proceso de pago
+    const paymentSuccess = true; // Esta lógica debería ser reemplazada por la integración con un servicio de pago
+
+    if (paymentSuccess) {
+      const requestBody = {
+        userId: currentUser._id,
+        items: cart.map((item) => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+        total: getTotalPrice(),
+        shippingInfo,
+      };
+
+      try {
+        const response = await fetch("http://localhost:5000/api/orders", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+          const errorMessage = await response.json();
+          throw new Error(errorMessage.error || "Error en la solicitud");
+        }
+
+        // Limpiar carrito y mostrar mensaje de éxito
+        clearCart();
+        setSuccess(true);
+        console.log("Pedido creado exitosamente");
+      } catch (error) {
+        console.error("Error:", error.message);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setError("Error en el pago");
+      setLoading(false);
+    }
   };
 
   return (
@@ -110,7 +159,7 @@ const Checkout = () => {
             ))}
             <div className="checkout-form">
               <h3>Datos de Envío</h3>
-              <form>
+              <form onSubmit={handlePayment}>
                 <div className="form-group">
                   <label htmlFor="firstName">Nombre</label>
                   <input
@@ -246,10 +295,16 @@ const Checkout = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-                <button type="submit" onClick={handlePayment}>
-                  Finalizar Compra
-                </button>
+                {loading ? (
+                  <p>Procesando...</p>
+                ) : (
+                  <button type="submit">Finalizar Compra</button>
+                )}
               </form>
+              {error && <p className="error-message">{error}</p>}
+              {success && (
+                <p className="success-message">Compra realizada con éxito</p>
+              )}
             </div>
             <div className="checkout-summary">
               <h3>Resumen</h3>

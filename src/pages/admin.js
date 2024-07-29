@@ -1,53 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { OrdersContext } from "../context/OrderContext"; // Asegúrate de tener este contexto creado
 
-const Admin = () => {
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/orders");
-        if (!response.ok) {
-          const errorMessage = await response.json();
-          throw new Error(errorMessage.error || "Error en la solicitud");
-        }
-        const ordersData = await response.json();
-        setOrders(ordersData);
-      } catch (error) {
-        console.error("Error:", error.message);
-        setError(error.message);
-      }
-    };
-
-    fetchOrders();
-  }, []);
+const AdminPage = () => {
+  const { orders } = useContext(OrdersContext);
 
   return (
-    <div>
-      <h1>Admin - Pedidos</h1>
-      {error && <p>{error}</p>}
-      <ul>
-        {orders.map((order) => (
-          <li key={order._id}>
-            <p>Usuario: {order.user.username}</p>
-            <p>Email: {order.user.email}</p>
-            <p>Total: ${order.total}</p>
-            <p>Status: {order.status}</p>
-            <p>Fecha: {new Date(order.createdAt).toLocaleString()}</p>
-            <ul>
-              {order.items.map((item, index) => (
-                <li key={index}>
-                  {item.name} - ${item.price} x {item.quantity}
-                </li>
-              ))}
-            </ul>
-            {/* Agregar botones para cambiar el estado del pedido */}
-          </li>
-        ))}
-      </ul>
+    <div className="admin-page">
+      <h1>Pedidos</h1>
+      {orders.length === 0 ? (
+        <div className="no-orders">
+          <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGdsNHIxank4c2M4bnhpbm4xc2htZmZwbHlrMGR4dmczMHlsMjl2ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7erBV7JsTvPuU/giphy.webp" alt="No hay pedidos" />
+          <p>No hay pedidos pendientes.</p>
+        </div>
+      ) : (
+        <div className="orders-list">
+          {orders.map((order, index) => (
+            <div key={index} className="order-item">
+              <p>Pedido #{order.id}</p>
+              <p>Cliente: {order.customerName}</p>
+              <p>Total: ${order.total}</p>
+              {/* Agrega más detalles según sea necesario */}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-export default Admin;
+export default AdminPage;

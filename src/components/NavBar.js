@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Asegúrate de importar useNavigate
 import { useUser } from "../context/UserContext.js";
 import stickersData from "./stickers.json";
 import "./navbar.css";
@@ -15,6 +15,7 @@ const Navbar = () => {
   const hideDropdownTimeout = useRef(null);
   const hideProfileDropdownTimeout = useRef(null);
   const cartContext = useContext(CartContext);
+  const navigate = useNavigate(); // Aquí se declara el hook useNavigate
 
   useEffect(() => {
     const types = [
@@ -39,6 +40,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout();
     setIsProfileDropdownOpen(false);
+    navigate("/"); // Redirige al usuario a la página de inicio
   };
 
   const handleStickersMouseEnter = () => {
@@ -125,13 +127,6 @@ const Navbar = () => {
                 </button>
                 {isProfileDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
-                    {/* <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsProfileDropdownOpen(false)}
-                    >
-                      Perfil
-                    </Link> */}
                     <Link
                       to="/purchases"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -139,6 +134,15 @@ const Navbar = () => {
                     >
                       Compras
                     </Link>
+                    {currentUser.username === "admin" && (
+                      <Link
+                        to="/admin"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsProfileDropdownOpen(false)}
+                      >
+                        Pedidos
+                      </Link>
+                    )}
                     <button
                       onClick={handleLogout}
                       className="w-full text-left block px-4 py-2 text-gray-700 hover:bg-gray-100 bg-transparent"
@@ -227,8 +231,20 @@ const Navbar = () => {
                     >
                       Purchases
                     </Link>
+                    {currentUser.username === "admin" && (
+                      <Link
+                        to="/admin"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsProfileDropdownOpen(false)}
+                      >
+                        Orders
+                      </Link>
+                    )}
                     <button
-                      onClick={handleLogout}
+                      onClick={() => {
+                        handleLogout();
+                        navigate("/"); // Redirige a la página de inicio después de cerrar sesión
+                      }}
                       className="w-full text-left block px-4 py-2 text-gray-700 hover:bg-gray-100 bg-transparent"
                     >
                       Logout
