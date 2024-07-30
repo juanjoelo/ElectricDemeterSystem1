@@ -21,9 +21,7 @@ const App = () => {
     <UserProvider>
       <CartProvider>
         <OrdersProvider>
-          {" "}
-          {/* Añade el proveedor de contexto de pedidos */}
-          <Router>
+          <Router basename="/vinylvibes">
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
