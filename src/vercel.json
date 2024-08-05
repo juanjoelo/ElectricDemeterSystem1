@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/vinylvibes/(.*)",
+        "destination": "/vinylvibes/index.html"
+      }
+    ]
+  }
+  
