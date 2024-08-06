@@ -1392,8 +1392,13 @@ packages:
   '@types/yargs@16.0.9':
     resolution: {integrity: sha512-tHhzvkFXZQeTECenFoRljLBYPZJ7jAVxqqtEI0qTLOmuultnFp4I9yKE17vTuhf7BkhCu7I4XuemPgikDVuYqA==}
 
+<<<<<<< HEAD
   '@types/yargs@17.0.33':
     resolution: {integrity: sha512-WpxBCKWPLr4xSsHgz511rFJAM+wS28w2zEO1QDNY5zM/S8ok70NNfztH0xwhqKyaK0OHCbN98LDAZuy1ctxDkA==}
+=======
+  '@types/yargs@17.0.32':
+    resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
 
   '@typescript-eslint/eslint-plugin@5.62.0':
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
@@ -2448,8 +2453,13 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
+<<<<<<< HEAD
   electron-to-chromium@1.5.5:
     resolution: {integrity: sha512-QR7/A7ZkMS8tZuoftC/jfqNkZLQO779SSW3YuZHP4eXpj3EffGLFcB/Xu9AAZQzLccTiCV+EmUo3ha4mQ9wnlA==}
+=======
+  electron-to-chromium@1.5.4:
+    resolution: {integrity: sha512-orzA81VqLyIGUEA77YkVA1D+N+nNfl2isJVjjmOyrlxuooZ19ynb+dOlaDTqd/idKRS9lDCSBmtzM+kyCsMnkA==}
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
 
   emittery@0.10.2:
     resolution: {integrity: sha512-aITqOwnLanpHLNXZJENbOgjUBeHocD+xsSJmNrjovKBW5HbSpW3d1pEls7GFQPUWXiwG9+0P4GtHfEqC/4M0Iw==}
@@ -7108,7 +7118,11 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
       '@types/node': 22.1.0
+<<<<<<< HEAD
       '@types/yargs': 17.0.33
+=======
+      '@types/yargs': 17.0.32
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
       chalk: 4.1.2
 
   '@jest/types@29.6.3':
@@ -7117,7 +7131,11 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
       '@types/node': 22.1.0
+<<<<<<< HEAD
       '@types/yargs': 17.0.33
+=======
+      '@types/yargs': 17.0.32
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
       chalk: 4.1.2
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -7533,7 +7551,11 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
+<<<<<<< HEAD
   '@types/yargs@17.0.33':
+=======
+  '@types/yargs@17.0.32':
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
     dependencies:
       '@types/yargs-parser': 21.0.3
 
@@ -8151,7 +8173,11 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001649
+<<<<<<< HEAD
       electron-to-chromium: 1.5.5
+=======
+      electron-to-chromium: 1.5.4
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -8726,7 +8752,11 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
+<<<<<<< HEAD
   electron-to-chromium@1.5.5: {}
+=======
+  electron-to-chromium@1.5.4: {}
+>>>>>>> 5857978ac0c0537272d349f3114998be08dec6ed
 
   emittery@0.10.2: {}
 
