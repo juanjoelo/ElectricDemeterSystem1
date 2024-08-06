@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/CartContext.js";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../context/UserContext.js";
 import "./checkout.css";
 import { MagicMotion } from "react-magic-motion";
 
